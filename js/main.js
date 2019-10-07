@@ -11,12 +11,12 @@ var toGetNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var calculateComments = function (someNum) {
+var calculateComments = function (rangeNum) {
   var arrNumbers = [];
-  for (var i = 1; i <= someNum; i++) {
+  for (var i = 1; i <= rangeNum; i++) {
     var userObject = {
       'avatars': 'img/avatar-' + toGetNumber(MIN_NUM, MAX_NUM) + '.svg',
-      'comments': ARR_MESSAGES[toGetNumber(0, ARR_MESSAGES.length)],
+      'message': ARR_MESSAGES[toGetNumber(0, ARR_MESSAGES.length)],
       'name': ARR_NAMES[toGetNumber(0, ARR_NAMES.length)]
     };
     arrNumbers.push(userObject);
@@ -37,3 +37,30 @@ var showNumbers = function (someNum) {
   }
   return arrNumbers;
 };
+
+// Генерация по шаблону picture
+
+var pictures = document.querySelector('.pictures');
+var similarTemplate = document.querySelector('#picture').content.querySelector('.picture');
+
+for (var j = 0; j < 25; j++) {
+  j = similarTemplate.cloneNode(true);
+  pictures.appendChild(j);
+}
+
+/*
+var fragment = document.createDocumentFragment();
+for (var i = 0; i < wizards.length; i++) {
+  fragment.appendChild(renderWizard(wizards[i]));
+}
+similarListElement.appendChild(fragment);
+
+var renderWizard = function (wizard) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+
+  return wizardElement;
+};
+*/

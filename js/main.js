@@ -11,7 +11,7 @@ var toGetNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var calculateNumbers = function (someNum) {
+var calculateComments = function (someNum) {
   var arrNumbers = [];
   for (var i = 1; i <= someNum; i++) {
     var userObject = {
@@ -24,14 +24,14 @@ var calculateNumbers = function (someNum) {
   return arrNumbers;
 };
 
-var resultNumbers = function (someNum) {
+var showNumbers = function (someNum) {
   var arrNumbers = [];
   for (var i = 1; i <= someNum; i++) {
     var generObject = {
-      url: 'photos/' + toGetNumber(MIN_JPG, MAX_JPG) + '.jpg',
+      url: 'photos/' + i + '.jpg',
       description: ARR_DESCRIPTIONS[toGetNumber(0, ARR_DESCRIPTIONS.length)],
-      likes: toGetNumber(MIN_NUM, MAX_NUM),
-      comments: calculateNumbers(25)
+      likes: toGetNumber(MIN_JPG, MAX_JPG),
+      comments: calculateComments(25)
     };
     arrNumbers.push(generObject);
   }

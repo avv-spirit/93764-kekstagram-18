@@ -50,12 +50,14 @@ for (var j = 0; j <= COUNT_USERS; j++) {
   pictures.appendChild(simple);
 }
 
+// Если просто вывести вот так тогда понятно, как достучаться -->
+// document.querySelector('.picture__img').src = 'photos/1.jpg'; и вместо 1 поставить переменную из цикла.
+
 // Вставка картинок
 
 var renderWizard = function () {
   var wizardElement = similarTemplate.cloneNode(true);
-  wizardElement.querySelector('.picture__img').src = '1.jpg';
-
+  wizardElement.querySelector('.picture__img').src = 'photos/' + j + '.jpg';
   return wizardElement;
 };
 

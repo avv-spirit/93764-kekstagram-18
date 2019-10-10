@@ -39,31 +39,22 @@ var showNumbers = function (someNum) {
   return arrNumbers;
 };
 
-// Генерация по шаблону picture
-
 var pictures = document.querySelector('.pictures');
 var similarTemplate = document.querySelector('#picture').
-  content.querySelector('.picture__img');
+  content.querySelector('.picture');
 
-for (var j = 0; j <= COUNT_USERS; j++) {
-  var simple = similarTemplate.cloneNode(true);
-  pictures.appendChild(simple);
-}
+var generateImg = showNumbers(COUNT_USERS);
 
-// Если просто вывести вот так тогда понятно, как достучаться -->
-// document.querySelector('.picture__img').src = 'photos/1.jpg'; и вместо 1 поставить переменную из цикла.
-
-// Вставка картинок
-
-var renderWizard = function () {
-  var wizardElement = similarTemplate.cloneNode(true);
-  wizardElement.querySelector('.picture__img').src = 'photos/' + j + '.jpg';
-  return wizardElement;
+var renderImages = function (images) {
+  var userElement = similarTemplate.cloneNode(true);
+  userElement.querySelector('.picture__img').src = images.url;
+  userElement.querySelector('.picture__likes').textContent = images.likes;
+  userElement.querySelector('.picture__comments').textContent = images.comments;
+  return userElement;
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i <= renderWizard; i++) {
-  fragment.appendChild(renderWizard(showNumbers[i]));
+for (var i = 0; i < generateImg.length; i++) {
+  pictures.appendChild(renderImages(generateImg[i]));
 }
 pictures.appendChild(fragment);
-

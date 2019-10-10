@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Владимир Азаров](https://up.htmlacademy.ru/javascript/18/user/93764).
-* Наставник: [Байдаров Денис] (https://up.htmlacademy.ru/adaptive/15/user/7956).
+* Наставник: [Денис Байдаров](https://up.htmlacademy.ru/javascript/18/user/7956).
 
 ---
 

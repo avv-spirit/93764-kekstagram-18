@@ -8,31 +8,31 @@ var MIN_JPG = 1;
 var MAX_JPG = 25;
 var COUNT_USERS = 25;
 
-var toGetNumber = function (min, max) {
+var getRandom = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
 var calculateComments = function (rangeNum) {
-  var arrNumbers = [];
+  var arrComments = [];
   for (var i = 1; i <= rangeNum; i++) {
     var userObject = {
-      'avatars': 'img/avatar-' + toGetNumber(MIN_NUM, MAX_NUM) + '.svg',
-      'message': ARR_MESSAGES[toGetNumber(0, ARR_MESSAGES.length)],
-      'name': ARR_NAMES[toGetNumber(0, ARR_NAMES.length)]
+      'avatars': 'img/avatar-' + getRandom(MIN_NUM, MAX_NUM) + '.svg',
+      'message': ARR_MESSAGES[getRandom(0, ARR_MESSAGES.length)],
+      'name': ARR_NAMES[getRandom(0, ARR_NAMES.length)]
     };
-    arrNumbers.push(userObject);
+    arrComments.push(userObject);
   }
-  return arrNumbers;
+  return arrComments;
 };
 
-var showNumbers = function (someNum) {
+var getPictures = function (someNum) {
   var arrNumbers = [];
   for (var i = 1; i <= someNum; i++) {
     var generateObject = {
       url: 'photos/' + i + '.jpg',
-      description: ARR_DESCRIPTIONS[toGetNumber(0, ARR_DESCRIPTIONS.length)],
-      likes: toGetNumber(MIN_JPG, MAX_JPG),
-      comments: calculateComments(COUNT_USERS)
+      description: ARR_DESCRIPTIONS[getRandom(0, ARR_DESCRIPTIONS.length)],
+      likes: getRandom(MIN_JPG, MAX_JPG),
+      comments: getRandom(MIN_NUM, calculateComments.length)
     };
     arrNumbers.push(generateObject);
   }
@@ -43,7 +43,7 @@ var pictures = document.querySelector('.pictures');
 var similarTemplate = document.querySelector('#picture').
   content.querySelector('.picture');
 
-var generateImg = showNumbers(COUNT_USERS);
+var generateImg = getPictures(COUNT_USERS);
 
 var renderImages = function (images) {
   var userElement = similarTemplate.cloneNode(true);

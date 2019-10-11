@@ -32,7 +32,7 @@ var getPictures = function (someNum) {
       url: 'photos/' + i + '.jpg',
       description: ARR_DESCRIPTIONS[getRandom(0, ARR_DESCRIPTIONS.length)],
       likes: getRandom(MIN_JPG, MAX_JPG),
-      comments: getRandom(MIN_NUM, calculateComments.length)
+      comments: calculateComments(getRandom(MIN_JPG, MAX_JPG))
     };
     arrNumbers.push(generateObject);
   }
@@ -49,7 +49,7 @@ var renderImages = function (images) {
   var userElement = similarTemplate.cloneNode(true);
   userElement.querySelector('.picture__img').src = images.url;
   userElement.querySelector('.picture__likes').textContent = images.likes;
-  userElement.querySelector('.picture__comments').textContent = images.comments;
+  userElement.querySelector('.picture__comments').textContent = images.comments.length;
   return userElement;
 };
 

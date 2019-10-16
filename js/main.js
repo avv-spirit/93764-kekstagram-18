@@ -66,17 +66,17 @@ pictures.appendChild(fragment);
 var bigPicture = document.querySelector('.big-picture');
 bigPicture.classList.remove('hidden');
 
-bigPicture = document.querySelector('.big-picture').
-  content.querySelector('.social__comment');
 var bigPictureComment = bigPicture.querySelector('.social__comments');
+
+// var biggerPicture = document.querySelector('.big-picture__social');
 
 bigPicture.querySelector('.social__comment-count').classList.add('visually-hidden');
 bigPicture.querySelector('.comments-loader').classList.add('visually-hidden');
 
-var generateComments = calculateComments(COUNT_USERS);
+var generateComments = calculateComments(MIN_NUM);
 
 var renderComment = function (comments) {
-  var userComment = bigPicture.cloneNode(true);
+  var userComment = bigPictureImg.cloneNode(true);
   userComment.querySelector('.big-picture__img').src = comments.url;
   userComment.querySelector('.likes-count').likes = comments.likes;
   userComment.querySelector('.comments-count').comments = comments.comments.length;
@@ -85,12 +85,11 @@ var renderComment = function (comments) {
 };
 
 var getComments = function (comment) {
-  var newComment = bigPictureComment.cloneNode(true);
-  var commentImage = newComment.querySelector('.social__picture');
-  commentImage.src = comment.avatars;
-  commentImage.alt = comment.name;
-  newComment.querySelector('.social__text').textContent = comment.message;
-  return newComment;
+  var commentElement = bigPictureComment.cloneNode(true);
+  commentElement.querySelector('.social__picture').src = comment.avatars;
+  commentElement.querySelector('.social__picture').alt = comment.name;
+  commentElement.querySelector('.social__text').textContent = comment.message;
+  return commentElement;
 };
 
 var fragmentComment = document.createDocumentFragment();
@@ -98,3 +97,9 @@ for (var j = 0; j < generateComments.length; j++) {
   bigPicture.appendChild(getComments(generateComments[j]));
 }
 bigPicture.appendChild(fragmentComment);
+
+var fragmentPics = document.createDocumentFragment();
+for (var k = 0; j < generateImg.length; k++) {
+  bigPicture.appendChild(renderComment(generateComments[k]));
+}
+bigPicture.appendChild(fragmentPics);

@@ -66,6 +66,7 @@ pictures.appendChild(fragment);
 var bigPicture = document.querySelector('.big-picture');
 bigPicture.classList.remove('hidden');
 
+var bigger = document.querySelector('.big-picture__social');
 var bigPictureComment = bigPicture.querySelector('.social__comments');
 
 // var biggerPicture = document.querySelector('.big-picture__social');

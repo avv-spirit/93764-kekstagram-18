@@ -68,15 +68,14 @@ bigPicture.classList.remove('hidden');
 bigPicture.querySelector('.social__comment-count').classList.add('visually-hidden');
 bigPicture.querySelector('.comments-loader').classList.add('visually-hidden');
 
-var bigPictureComment = bigPicture.querySelector('.social__comments');
-// var socialComments = document.querySelector('.social__comments');
-// var socialComment = socialComments.querySelector('.social__comment');
-
+var socialComments = document.querySelector('.social__comments');
+var socialComment = socialComments.querySelector('.social__comment');
+var socialText = socialComment.querySelector('.social__text');
+var socialOicture = socialComment.querySelector('.social__picture');
 var changeImg = bigPicture.querySelector('.big-picture__img');
 
-// var generateComments = calculateComments(MIN_NUM);
 
-var testObj = generateImg[MIN_NUM];
+var arrayObject = generateImg[MIN_NUM];
 
 var renderTest = function (mega) {
   changeImg.querySelector('img').src = mega.url;
@@ -84,40 +83,34 @@ var renderTest = function (mega) {
   bigPicture.querySelector('.comments-count').textContent = mega.comments.length;
   bigPicture.querySelector('.social__caption').textContent = mega.description;
 };
-renderTest(testObj);
+renderTest(arrayObject);
 
-var newTemplate = document.querySelector('#social__template').
-content.querySelector('.social__comments');
+// Generate comment for bigPicture
 
+var fragmentComment = document.createDocumentFragment();
+
+ARR_MESSAGES.forEach(function (comment) {
+  var li = socialComments.createElement('li');
+  li.textContent = comment;
+  fragmentComment.appendChild(li);
+});
+socialComments.appendChild(fragmentComment);
 
 /*
-var getComments = function (comment) {
-  
-  return commentElement;
+var addComments = function (comment) {
+  var socialComment2 = socialComment.cloneNode(true);
+  socialComment2.querySelector('.social__picture').src = comment.avatars;
+  socialComment2.querySelector('.social__picture').alt = comment.name;
+  socialComment2.querySelector('.social__text').textContent = comment.message.length;
+  return socialComment2;
 };
 
 var fragmentComment = document.createDocumentFragment();
-for (var j = 0; j < generateImg.length; j++) {
-  socialComments.removeChild(socialComment);
-  socialComments.appendChild(getComments(generateImg[j]));
+for (var k = 0; k < test2.length; k++) {
+  socialComments.appendChild((test2[i]));
 }
-socialComment.appendChild(fragmentComment);
+socialComments.appendChild(fragmentComment);
 */
-/*
-var getComments = function (comment) {
-  var commentElement = bigPictureComment.cloneNode(true);
-  commentElement.querySelector('.social__picture').src = comment.avatars;
-  commentElement.querySelector('.social__picture').alt = comment.name;
-  commentElement.querySelector('.social__text').textContent = comment.message;
-  return commentElement;
-};
-
-var fragmentComment = document.createDocumentFragment();
-for (var j = 0; j < generateComments.length; j++) {
-  socialComments.removeChild(socialComment);
-  socialComments.appendChild(getComments(generateComments[j]));
-}
-socialComment.appendChild(fragmentComment);*/
 /*
 var image = document.querySelector('.social__picture');
 image.src = 'img/avatar-' + getRandom(MIN_NUM, MAX_NUM) + '.svg';
@@ -134,28 +127,4 @@ likes.textContent = getRandom(MINLIKES, MAXLIKES);
 var bigImage = document.querySelector('.big-picture__img');
 var test = bigImage.querySelector('img');
 test.src = 'photos/' + getRandom(MIN_JPG, MAX_JPG) + '.jpg';
-*/
-
-/*
-var fragmentTest = document.createDocumentFragment();
-for (var f = 0; f <= testObj.length; f++) {
-  bigPicture.appendChild(renderTest(testObj[f]));
-}*/
-
-/*
-var renderComment = function (comments) {
-  var userComment = bigPicture.cloneNode(true);
-  userComment.querySelector('.big-picture__img').src = comments.url;
-  userComment.querySelector('.likes-count').likes = comments.likes;
-  userComment.querySelector('.comments-count').comments = comments.comments.length;
-  userComment.querySelector('.social__caption').description = comments.description;
-  return userComment;
-};
-
-var fragmentPics = document.createDocumentFragment();
-for (var k = 0; k < generateComments.length; k++) {
-  soll.removeChild();
-  soll.appendChild(renderComment(renderComment[k]));
-}
-soll.appendChild(fragmentPics);
 */

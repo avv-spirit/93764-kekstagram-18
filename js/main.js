@@ -91,11 +91,16 @@ renderTest(arrayObject);
 
 var myFunction = function (content) {
   var social = socialComment.cloneNode(true);
-  socialComment.querySelector('.social__picture').src = content.avatars;
-  socialComment.querySelector('.social__text').textContent = content.message;
+  socialComment.querySelector('.social__picture').src = content.comments[0].avatars;
+  socialComment.querySelector('.social__text').textContent = content.comments[0].message;
+  var fragmentComment = document.createDocumentFragment();
+  for (var k = 0; k <= content.comments; k++) {
+    socialComment.appendChild(content.comments[k]);
+  }
+  socialComment.appendChild(fragmentComment);
   return social;
 };
-myFunction(generateImg[1]);
+myFunction(generateImg[0]);
 
 /*
 ARR_MESSAGES.forEach(function(browser) {

@@ -70,8 +70,8 @@ bigPicture.querySelector('.comments-loader').classList.add('visually-hidden');
 
 var socialComments = document.querySelector('.social__comments');
 var socialComment = socialComments.querySelector('.social__comment');
-var socialText = socialComment.querySelector('.social__text');
-var socialPicture = socialComment.querySelector('.social__picture');
+// var socialText = socialComment.querySelector('.social__text');
+// var socialPicture = socialComment.querySelector('.social__picture');
 var changeImg = bigPicture.querySelector('.big-picture__img');
 
 
